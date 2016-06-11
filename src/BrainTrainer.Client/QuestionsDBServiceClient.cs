@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BrainTrainer.Client.Models;
 using BrainTrainer.Client.Service;
@@ -11,6 +12,7 @@ namespace BrainTrainer.Client
         private const string SearchQuestionPath = "xml/questions/types1/";
         private const string RandomQuestionPath = "xml/random";
 
+        private const string QuestionsLimitFlag = "/limit{0}";
         private const string QuestionsDateNumberLimitFlag = "/from_{0}/limit{1}";
         private const string SearchTextFlagAnswer = "/A?page=";
 
@@ -18,9 +20,15 @@ namespace BrainTrainer.Client
 
         private readonly BaseServiceClient _client = new BaseServiceClient(@"http://db.chgk.info/");
 
-        public async Task<IEnumerable<searchQuestion>> GetRandomQuestionsPack()
+        public async Task<searchQuestion> GetRandomQuestion()
         {
-            var getPackTask = await _client.GetObject<search>(RandomQuestionPath);
+            var getPackTask = await _client.GetObject<search>(RandomQuestionPath + String.Format(QuestionsLimitFlag, 1));
+            return getPackTask.Items.FirstOrDefault();
+        }
+        
+        public async Task<IEnumerable<searchQuestion>> GetRandomQuestionsPack(int questionsLimit = 25)
+        {
+            var getPackTask = await _client.GetObject<search>(RandomQuestionPath + String.Format(QuestionsLimitFlag, questionsLimit));
             return getPackTask.Items;
         }
 
