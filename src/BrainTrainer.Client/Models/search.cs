@@ -16,6 +16,7 @@ namespace BrainTrainer.Client.Models
     {
 
         private searchQuestion[] itemsField;
+        private int total;
 
         /// <remarks/>
         [XmlElement("question", Form = XmlSchemaForm.Unqualified)]
@@ -29,6 +30,14 @@ namespace BrainTrainer.Client.Models
             {
                 this.itemsField = value;
             }
+        }
+
+        /// <remarks/>
+        [XmlElement("total", Form = XmlSchemaForm.Unqualified)]
+        public int Total
+        {
+            get { return this.total; }
+            set { this.total = value; }
         }
     }
 }

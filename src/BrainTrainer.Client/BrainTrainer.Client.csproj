@@ -41,7 +41,7 @@
     <Compile Include="Models\searchQuestion.cs" />
     <Compile Include="Service\BaseServiceClient.cs" />
     <Compile Include="Extensions\SerializationExtension.cs" />
-    <Compile Include="Models\Search.cs" />
+    <Compile Include="Models\search.cs" />
     <Compile Include="QuestionsDBServiceClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
