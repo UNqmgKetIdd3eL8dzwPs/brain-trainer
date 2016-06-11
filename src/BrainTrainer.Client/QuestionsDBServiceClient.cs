@@ -10,7 +10,8 @@ namespace BrainTrainer.Client
     {
         private const string SearchQuestionPath = "xml/questions/types1/";
         private const string RandomQuestionPath = "xml/random";
-        
+
+        private const string QuestionsDateNumberLimitFlag = "/from_{0}/limit{1}";
         private const string SearchTextFlagAnswer = "/A?page=";
 
         private const int NumberOfItemsInPage = 50;
@@ -20,6 +21,12 @@ namespace BrainTrainer.Client
         public async Task<IEnumerable<searchQuestion>> GetRandomQuestionsPack()
         {
             var getPackTask = await _client.GetObject<search>(RandomQuestionPath);
+            return getPackTask.Items;
+        }
+
+        public async Task<IEnumerable<searchQuestion>> GetRandomQuestionsPackFromDate(DateTime startDateTime, int numberOfQuestions = 100)
+        {
+            var getPackTask = await _client.GetObject<search>(RandomQuestionPath+ String.Format(QuestionsDateNumberLimitFlag, startDateTime.ToString("yyyy-MM-dd"), numberOfQuestions));
             return getPackTask.Items;
         }
 
