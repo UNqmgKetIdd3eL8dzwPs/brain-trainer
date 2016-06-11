@@ -1,0 +1,18 @@
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainTrainer.App">
+  <Application.Resources>
+    <ResourceDictionary>
+      <Color x:Key="MainColor">#1B2E41</Color>
+      <Color x:Key="SecondaryColor">#293949</Color>
+      <Color x:Key="BackgroundColor">#F0F1F2</Color>
+      <Color x:Key="ShadowedBackgroundColor">#30000000</Color>
+      <Color x:Key="AccentColor1">#014783</Color>
+      <Color x:Key="AccentColor2">#FF5200</Color>
+      <Color x:Key="WhiteColor">White</Color>
+      <Color x:Key="TextColorLight">#293949</Color>
+      <Color x:Key="TextColorDark">#293949</Color>
+      <Color x:Key="DefaultConverterColor">#006400</Color>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

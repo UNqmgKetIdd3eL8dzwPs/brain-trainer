@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BrainTrainer.Pages;
+﻿using BrainTrainer.Pages;
 using Xamarin.Forms;
 
 namespace BrainTrainer
 {
-    public class App : Application
+    public partial class App : Application
     {
         public App()
         {
