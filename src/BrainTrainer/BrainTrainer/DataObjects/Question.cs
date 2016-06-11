@@ -1,11 +1,30 @@
 ﻿using BrainTrainer.Client.Models;
-using Xamarin.Forms;
+using MvvmHelpers;
 
 namespace BrainTrainer.DataObjects
 {
     //ToDO: investigate and remove unnecesssary properties (i.e. tournament properties)
-    class Question : BindableObject
+    class Question : ObservableObject
     {
+        private string _questionId;
+        private string _parentId;
+        private string _number;
+        private string _type;
+        private string _typeNum;
+        private string _textId;
+        private string _questionText;
+        private string _answer;
+        private string _passCriteria;
+        private string _authors;
+        private string _sources;
+        private string _comments;
+        private string _rating;
+        private string _ratingNumber;
+        private string _complexity;
+        private string _topic;
+        private string _processedBySearch;
+        private string _notices;
+
         public Question(searchQuestion searchQuestion)
         {
             this.Answer = searchQuestion.Answer;
@@ -32,39 +51,107 @@ namespace BrainTrainer.DataObjects
 
         //public string TournamentFileName{get; set;}
 
-        public string QuestionId{get; set;}
+        public string QuestionId
+        {
+            get { return _questionId; }
+            set { SetProperty(ref _questionId, value); }
+        }
 
-        public string ParentId{get; set;}
+        public string ParentId
+        {
+            get { return _parentId; }
+            set { SetProperty(ref _parentId, value); }
+        }
 
-        public string Number{get; set;}
+        public string Number
+        {
+            get { return _number; }
+            set { SetProperty(ref _number, value); }
+        }
 
-        public string Type{get; set;}
+        public string Type
+        {
+            get { return _type; }
+            set { SetProperty(ref _type, value); }
+        }
 
-        public string TypeNum{get; set;}
+        public string TypeNum
+        {
+            get { return _typeNum; }
+            set { SetProperty(ref _typeNum, value); }
+        }
 
-        public string TextId{get; set;}
+        public string TextId
+        {
+            get { return _textId; }
+            set { SetProperty(ref _textId, value); }
+        }
 
-        public string QuestionText{get; set;}
+        public string QuestionText
+        {
+            get { return _questionText; }
+            set { SetProperty(ref _questionText, value); }
+        }
 
-        public string Answer{get; set;}
+        public string Answer
+        {
+            get { return _answer; }
+            set { SetProperty(ref _answer, value); }
+        }
 
-        public string PassCriteria{get; set;}
+        public string PassCriteria
+        {
+            get { return _passCriteria; }
+            set { SetProperty(ref _passCriteria, value); }
+        }
 
-        public string Authors{get; set;}
+        public string Authors
+        {
+            get { return _authors; }
+            set { SetProperty(ref _authors, value); }
+        }
 
-        public string Sources{get; set;}
+        public string Sources
+        {
+            get { return _sources; }
+            set { SetProperty(ref _sources, value); }
+        }
 
-        public string Comments{get; set;}
+        public string Comments
+        {
+            get { return _comments; }
+            set { SetProperty(ref _comments, value); }
+        }
 
-        public string Rating{get; set;}
+        public string Rating
+        {
+            get { return _rating; }
+            set { SetProperty(ref _rating, value); }
+        }
 
-        public string RatingNumber{get; set;}
+        public string RatingNumber
+        {
+            get { return _ratingNumber; }
+            set { SetProperty(ref _ratingNumber, value); }
+        }
 
-        public string Complexity{get; set;}
+        public string Complexity
+        {
+            get { return _complexity; }
+            set { SetProperty(ref _complexity, value); }
+        }
 
-        public string Topic{get; set;}
+        public string Topic
+        {
+            get { return _topic; }
+            set { SetProperty(ref _topic, value); }
+        }
 
-        public string ProcessedBySearch{get; set;}
+        public string ProcessedBySearch
+        {
+            get { return _processedBySearch; }
+            set { SetProperty(ref _processedBySearch, value); }
+        }
 
         //public string tourId{get; set;}
 
@@ -86,7 +173,10 @@ namespace BrainTrainer.DataObjects
 
         //public string tournamentPlayedAt2{get; set;}
 
-        public string Notices{get; set;}
-
+        public string Notices
+        {
+            get { return _notices; }
+            set { SetProperty(ref _notices, value); }
+        }
     }
 }

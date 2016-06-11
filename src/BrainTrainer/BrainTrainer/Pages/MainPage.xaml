@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:BrainTrainer.Pages;assembly=BrainTrainer"
              x:Class="BrainTrainer.Pages.MainPage">
-  <ListView></ListView>
-</ContentPage>
+  <ListView ItemsSource="{Binding Questions}"></ListView>
+</pages:BaseContentPage>
