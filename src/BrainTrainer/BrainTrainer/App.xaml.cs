@@ -3,11 +3,12 @@ using Xamarin.Forms;
 
 namespace BrainTrainer
 {
-    public partial class App : Application
+    public partial class App 
     {
         public App()
         {
             // The root page of your application
+            InitializeComponent();
             MainPage = new MainPage();
         }
 

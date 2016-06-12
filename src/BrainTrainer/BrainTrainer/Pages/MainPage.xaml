@@ -3,15 +3,15 @@
 <pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:pages="clr-namespace:BrainTrainer.Pages;assembly=BrainTrainer"
-                       x:Class="BrainTrainer.Pages.MainPage" BackgroundColor="#F0F1F2">
+                       x:Class="BrainTrainer.Pages.MainPage" BackgroundColor="{StaticResource BackgroundColor}">
     <ListView ItemsSource="{Binding Questions}" HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout>
-                        <Label Text="{Binding QuestionText}" TextColor="#293949" />
+                        <Label Text="{Binding QuestionText}" TextColor="{StaticResource TextColorDark}" />
                         <BoxView HeightRequest="1" HorizontalOptions="Fill" Color="Gray" />
-                        <Label Text="{Binding Answer}" TextColor="#293949" />
+                        <Label Text="{Binding Answer}" TextColor="{StaticResource TextColorDark}" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
