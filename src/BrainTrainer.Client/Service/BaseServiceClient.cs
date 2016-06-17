@@ -7,7 +7,7 @@ using BrainTrainer.Client.Extensions;
 
 namespace BrainTrainer.Client.Service
 {
-    class BaseServiceClient
+    public class BaseServiceClient
     {
         private readonly string ApiUri = String.Empty;
 
