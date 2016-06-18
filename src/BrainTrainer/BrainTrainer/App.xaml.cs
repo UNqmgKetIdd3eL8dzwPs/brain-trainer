@@ -1,4 +1,6 @@
-﻿using BrainTrainer.Pages;
+﻿using BrainTrainer.Client.Enums;
+using BrainTrainer.Client.Extensions;
+using BrainTrainer.Pages;
 using Xamarin.Forms;
 
 namespace BrainTrainer

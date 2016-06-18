@@ -40,9 +40,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\UrlPartAttribute.cs" />
+    <Compile Include="Attributes\UrlValueAttribute.cs" />
     <Compile Include="Enums\Competition.cs" />
     <Compile Include="Enums\Complexity.cs" />
     <Compile Include="Enums\Mode.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Models\searchQuestion.cs" />
     <Compile Include="QuestionsClient.cs" />
     <Compile Include="Service\BaseServiceClient.cs" />

@@ -1,4 +1,5 @@
 ﻿using BrainTrainer.Client.Enums;
+using BrainTrainer.Client.Extensions;
 
 namespace BrainTrainer.Client
 {
@@ -9,7 +10,6 @@ namespace BrainTrainer.Client
         public Complexity Complexity { get; set; } = Complexity.None;
         public int Limit { get; set; } = 1;
         public bool ShowAnswers { get; set; } = true;
-
         public override string ToString()
         {
             return base.ToString();
