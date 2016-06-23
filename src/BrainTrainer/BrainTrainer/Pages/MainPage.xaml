@@ -6,7 +6,7 @@
                        xmlns:views="clr-namespace:BrainTrainer.Views;assembly=BrainTrainer"
                        xmlns:controls="clr-namespace:BrainTrainer.Controls;assembly=BrainTrainer"
                        x:Class="BrainTrainer.Pages.MainPage" BackgroundColor="{StaticResource BackgroundColor}">
-  <controls:SwipeContentView x:Name="MainSwipeContentView" SwipeLeftCommand="{Binding NextQuestionCommand}" SwipeLeft="SwipeContentView_OnSwipeLeft" Padding="5">
+  <controls:SwipeContentView x:Name="MainSwipeContentView" InputTransparent="False" SwipeLeftCommand="{Binding NextQuestionCommand}" SwipeLeft="SwipeContentView_OnSwipeLeft" Padding="5">
     <StackLayout>
       <views:QuestionView BindingContext="{Binding CurrentQuestion}" VerticalOptions="FillAndExpand" />
       <!--<Button HeightRequest="80" BackgroundColor="{StaticResource BackgroundColor}"

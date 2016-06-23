@@ -3,12 +3,12 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BrainTrainer.Views.QuestionView">
-  <!--<ScrollView Orientation="Vertical">-->
-  <StackLayout x:Name="StackLayout">
-      <Image x:Name="QuestionImage" IsVisible="{Binding HasImage}" HorizontalOptions="Fill" Source="{Binding Image}"
-             Aspect="AspectFit" PropertyChanged="BindableObject_OnPropertyChanged"/>
-    <Label Text="{Binding QuestionText}" VerticalOptions="Fill" TextColor="{StaticResource TextColorDark}"/>
-  </StackLayout>
-
-  <!--</ScrollView>-->
+    <ScrollView Orientation="Vertical">
+        <StackLayout x:Name="StackLayout">
+            <Image x:Name="QuestionImage" IsVisible="{Binding HasImage}" HorizontalOptions="Fill"
+                   Source="{Binding Image}"
+                   Aspect="AspectFit" PropertyChanged="BindableObject_OnPropertyChanged" />
+            <Label Text="{Binding QuestionText}" VerticalOptions="Fill" TextColor="{StaticResource TextColorDark}" />
+        </StackLayout>
+    </ScrollView>
 </ContentView>

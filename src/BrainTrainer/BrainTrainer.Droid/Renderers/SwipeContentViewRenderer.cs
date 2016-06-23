@@ -6,15 +6,15 @@ using BrainTrainer.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(SwipeContentView), typeof(GestureFrameRenderer))]
+[assembly: ExportRenderer(typeof(SwipeContentView), typeof(SwipeContentViewRenderer))]
 namespace BrainTrainer.Droid.Renderers
 {
-    public class GestureFrameRenderer : ViewRenderer<ContentView, Android.Views.View>
+    public class SwipeContentViewRenderer : ViewRenderer<ContentView, Android.Views.View>
     {
         private readonly SwipeGestureListener _listener;
         private readonly GestureDetector _detector;
 
-        public GestureFrameRenderer()
+        public SwipeContentViewRenderer()
         {
             _listener = new SwipeGestureListener();
             _detector = new GestureDetector(_listener);
