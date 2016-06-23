@@ -19,9 +19,10 @@ namespace BrainTrainer.Pages
 
         private async void AnimateViewOnSwipe()
         {
-            MainSwipeContentView.FadeTo(0, 125);
-            await MainSwipeContentView.TranslateTo(-MainSwipeContentView.Width, 0, 125);
+            //MainSwipeContentView.FadeTo(0, 125);
+            //await MainSwipeContentView.TranslateTo(-MainSwipeContentView.Width, 0, 125);
 
+            MainSwipeContentView.Opacity = 0;
             MainSwipeContentView.TranslationX = MainSwipeContentView.Width;
 
             MainSwipeContentView.TranslateTo(0, 0, 125);

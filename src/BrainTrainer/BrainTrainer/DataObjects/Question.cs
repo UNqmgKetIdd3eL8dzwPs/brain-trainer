@@ -1,5 +1,9 @@
-﻿using BrainTrainer.Client.Models;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using BrainTrainer.Client.Models;
 using MvvmHelpers;
+using Xamarin.Forms;
 
 namespace BrainTrainer.DataObjects
 {
@@ -24,6 +28,8 @@ namespace BrainTrainer.DataObjects
         private string _topic;
         private string _processedBySearch;
         private string _notices;
+        private ImageSource _image;
+        private const string _webImagePath = @"http://db.chgk.info/images/db/";
 
         public Question(searchQuestion searchQuestion)
         {
@@ -36,7 +42,9 @@ namespace BrainTrainer.DataObjects
             this.ParentId = searchQuestion.ParentId;
             this.PassCriteria = searchQuestion.PassCriteria;
             this.ProcessedBySearch = searchQuestion.ProcessedBySearch;
-            this.QuestionText = searchQuestion.Question;
+
+            var rawQuestionText = searchQuestion.Question;
+            InitQuestionImage(rawQuestionText).GetAwaiter();
             this.Rating = searchQuestion.Rating;
             this.QuestionId = searchQuestion.QuestionId;
             this.RatingNumber = searchQuestion.RatingNumber;
@@ -45,6 +53,28 @@ namespace BrainTrainer.DataObjects
             this.Topic = searchQuestion.Topic;
             this.Type = searchQuestion.Type;
             this.TypeNum = searchQuestion.TypeNum;
+        }
+
+        private async Task InitQuestionImage(string rawQuestionText)
+        {
+            if (ContainsImageReference(rawQuestionText))
+            {
+                var splittedText = rawQuestionText.Split(new string[] {"(pic:", ".jpg)"}, StringSplitOptions.RemoveEmptyEntries);
+                var imageFileName = splittedText.FirstOrDefault();
+                var imageUri = new Uri(_webImagePath + imageFileName.Trim() + ".jpg");
+                Task<ImageSource> result = Task<ImageSource>.Factory.StartNew(() => ImageSource.FromUri(imageUri));
+                Image = await result;
+                QuestionText = splittedText.LastOrDefault();
+            }
+            else
+            {
+                QuestionText = rawQuestionText;
+            }
+        }
+
+        private bool ContainsImageReference(string rawQuestionText)
+        {
+            return rawQuestionText.Contains("(pic:") && rawQuestionText.Contains(".jpg)");
         }
 
         //public string TourFileName{get; set;}
@@ -91,6 +121,12 @@ namespace BrainTrainer.DataObjects
         {
             get { return _questionText; }
             set { SetProperty(ref _questionText, value); }
+        }
+
+        public ImageSource Image
+        {
+            get { return _image; }
+            set { SetProperty(ref _image, value); }
         }
 
         public string Answer

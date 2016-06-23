@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BrainTrainer.Views.QuestionView">
   <StackLayout>
+    <Image HorizontalOptions="Center" Source="{Binding Image}"></Image>
     <Label Text="{Binding QuestionText}" TextColor="{StaticResource TextColorDark}" />
     <BoxView HeightRequest="1" HorizontalOptions="Fill" Color="Gray" />
     <Label Text="{Binding Answer}" TextColor="{StaticResource TextColorDark}" />
