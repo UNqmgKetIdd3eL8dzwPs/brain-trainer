@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Collections\BtQueue.cs" />
     <Compile Include="DataObjects\Question.cs" />
     <Compile Include="Pages\BaseContentPage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">

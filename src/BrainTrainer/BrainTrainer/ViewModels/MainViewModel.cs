@@ -10,20 +10,18 @@ namespace BrainTrainer.ViewModels
 
         public MainViewModel()
         {
+
+            var randomQuestions =  ServiceClient.GetRandomQuestionsPack().GetAwaiter();
+            randomQuestions.OnCompleted(() =>
+            {
+                Questions = new ObservableCollection<Question>(randomQuestions.GetResult().Select(question => new Question(question)));
+            });
         }
 
         public ObservableCollection<Question> Questions
         {
             get { return _questions; }
             set { SetProperty(ref _questions, value); }
-        }
-
-        public async override void OnViewAppearing()
-        {
-            base.OnViewAppearing();
-            var randomQuestions = await ServiceClient.GetRandomQuestionsPack();
-            Questions = new ObservableCollection<Question>(randomQuestions.Select(question => new Question(question)));
-
         }
     }
 }

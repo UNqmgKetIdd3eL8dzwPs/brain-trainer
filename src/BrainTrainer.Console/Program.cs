@@ -8,12 +8,12 @@ namespace BrainTrainer.Console
     {
         static void Main(string[] args)
         {
-            QuestionsDBServiceClient clinet = new QuestionsDBServiceClient();
+            QuestionsClient clinet = new QuestionsClient(@"http://db.chgk.info/");
 
             //var allQ = clinet.GetRandomQuestionsPack().GetAwaiter().GetResult();
             //var qp = clinet.GetQuestionsAnswersContain("Пушкин").GetAwaiter().GetResult();
             //var qpAsSearch = clinet.GetAllQuestionsAnswersContain("Пушкин").GetAwaiter().GetResult();
-            var lastWeekQ = clinet.GetRandomQuestionsPack().GetAwaiter().GetResult();
+            var lastWeekQ = clinet.GetQuestions(new Settings()).GetAwaiter().GetResult();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace BrainTrainer.Client.Attributes
         public string BaseValue { get; }
         public string Separator { get; }
 
-        public UrlPartAttribute(string baseValue = "", string separator = @"\")
+        public UrlPartAttribute(string baseValue = "", string separator = @"/")
         {
             BaseValue = baseValue;
             Separator = separator;
