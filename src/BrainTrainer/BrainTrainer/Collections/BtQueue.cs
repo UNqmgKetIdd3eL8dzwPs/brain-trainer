@@ -6,7 +6,7 @@ namespace BrainTrainer.Collections
 {
     class BtQueue<T>
     {
-        private List<T> _list = new List<T>();
+        private readonly List<T> _list = new List<T>();
         public EventHandler MinNumberReached;
 
 
@@ -23,11 +23,16 @@ namespace BrainTrainer.Collections
             _list.Add(item);
         }
 
+        public void QueueRange(IEnumerable<T> items)
+        {
+            _list.AddRange(items);
+        }
+
         public T Dequeue()
         {
             var item = _list.FirstOrDefault();
             _list.RemoveAt(0);
-            if (_list.Count < MinNumberOfElements)
+            if (_list.Count == MinNumberOfElements)
             {
                 if (MinNumberReached != null)
                 {

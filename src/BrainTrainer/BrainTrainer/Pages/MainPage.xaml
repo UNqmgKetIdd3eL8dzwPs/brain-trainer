@@ -3,18 +3,13 @@
 <pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:pages="clr-namespace:BrainTrainer.Pages;assembly=BrainTrainer"
+                       xmlns:views="clr-namespace:BrainTrainer.Views;assembly=BrainTrainer"
                        x:Class="BrainTrainer.Pages.MainPage" BackgroundColor="{StaticResource BackgroundColor}">
-    <ListView ItemsSource="{Binding Questions}" HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding QuestionText}" TextColor="{StaticResource TextColorDark}" />
-                        <BoxView HeightRequest="1" HorizontalOptions="Fill" Color="Gray" />
-                        <Label Text="{Binding Answer}" TextColor="{StaticResource TextColorDark}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <views:QuestionView BindingContext="{Binding CurrentQuestion}" VerticalOptions="FillAndExpand" />
+        <Button HeightRequest="80" BackgroundColor="{StaticResource BackgroundColor}"
+                TextColor="{StaticResource TextColorDark}"
+                Text="NextQuestion" Command="{Binding NextQuestionCommand}" BorderWidth="1"
+                BorderColor="{StaticResource  TextColorDark}" />
+    </StackLayout>
 </pages:BaseContentPage>
