@@ -29,7 +29,8 @@ namespace BrainTrainer.DataObjects
         private string _processedBySearch;
         private string _notices;
         private ImageSource _image;
-        private const string _webImagePath = @"http://db.chgk.info/images/db/";
+        private bool _hasImage;
+        private const string WebImagePath = @"http://db.chgk.info/images/db/";
 
         public Question(searchQuestion searchQuestion)
         {
@@ -44,6 +45,7 @@ namespace BrainTrainer.DataObjects
             this.ProcessedBySearch = searchQuestion.ProcessedBySearch;
 
             var rawQuestionText = searchQuestion.Question;
+            this.HasImage = HasImageReference(rawQuestionText);
             InitQuestionImage(rawQuestionText).GetAwaiter();
             this.Rating = searchQuestion.Rating;
             this.QuestionId = searchQuestion.QuestionId;
@@ -55,13 +57,14 @@ namespace BrainTrainer.DataObjects
             this.TypeNum = searchQuestion.TypeNum;
         }
 
+
         private async Task InitQuestionImage(string rawQuestionText)
         {
-            if (ContainsImageReference(rawQuestionText))
+            if (HasImage)
             {
                 var splittedText = rawQuestionText.Split(new string[] {"(pic:", ".jpg)"}, StringSplitOptions.RemoveEmptyEntries);
                 var imageFileName = splittedText.FirstOrDefault();
-                var imageUri = new Uri(_webImagePath + imageFileName.Trim() + ".jpg");
+                var imageUri = new Uri(WebImagePath + imageFileName.Trim() + ".jpg");
                 Task<ImageSource> result = Task<ImageSource>.Factory.StartNew(() => ImageSource.FromUri(imageUri));
                 Image = await result;
                 QuestionText = splittedText.LastOrDefault();
@@ -72,7 +75,7 @@ namespace BrainTrainer.DataObjects
             }
         }
 
-        private bool ContainsImageReference(string rawQuestionText)
+        private bool HasImageReference(string rawQuestionText)
         {
             return rawQuestionText.Contains("(pic:") && rawQuestionText.Contains(".jpg)");
         }
@@ -121,6 +124,11 @@ namespace BrainTrainer.DataObjects
         {
             get { return _questionText; }
             set { SetProperty(ref _questionText, value); }
+        }
+        public bool HasImage
+        {
+            get { return _hasImage; }
+            set { SetProperty(ref _hasImage, value); }
         }
 
         public ImageSource Image
