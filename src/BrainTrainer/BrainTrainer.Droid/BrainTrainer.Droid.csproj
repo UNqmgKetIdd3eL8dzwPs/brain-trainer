@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Listeners\SwipeGestureListener.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CustomScrollViewRenderer.cs" />
     <Compile Include="Renderers\SwipeContentViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

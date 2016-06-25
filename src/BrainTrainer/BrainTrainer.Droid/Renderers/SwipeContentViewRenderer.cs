@@ -12,12 +12,12 @@ namespace BrainTrainer.Droid.Renderers
     public class SwipeContentViewRenderer : ViewRenderer<ContentView, Android.Views.View>
     {
         private readonly SwipeGestureListener _listener;
-        private readonly GestureDetector _detector;
+        internal readonly GestureDetector Detector;
 
         public SwipeContentViewRenderer()
         {
             _listener = new SwipeGestureListener();
-            _detector = new GestureDetector(_listener);
+            Detector = new GestureDetector(_listener);
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<ContentView> e)
@@ -47,12 +47,12 @@ namespace BrainTrainer.Droid.Renderers
 
         void HandleTouch(object sender, TouchEventArgs e)
         {
-            _detector.OnTouchEvent(e.Event);
+            Detector.OnTouchEvent(e.Event);
         }
 
         void HandleGenericMotion(object sender, GenericMotionEventArgs e)
         {
-            _detector.OnTouchEvent(e.Event);
+            Detector.OnTouchEvent(e.Event);
         }
 
         void HandleOnSwipeLeft(object sender, EventArgs e)

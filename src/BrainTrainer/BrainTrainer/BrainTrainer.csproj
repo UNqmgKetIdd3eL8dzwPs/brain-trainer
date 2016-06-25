@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Collections\BtQueue.cs" />
     <Compile Include="Controls\SwipeContentView.cs" />
+    <Compile Include="Controls\CustomScrollView.cs" />
     <Compile Include="DataObjects\Question.cs" />
     <Compile Include="Pages\BaseContentPage.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
