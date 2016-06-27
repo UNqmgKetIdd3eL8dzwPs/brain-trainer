@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:pages="clr-namespace:BrainTrainer.Pages;assembly=BrainTrainer"
                        xmlns:views="clr-namespace:BrainTrainer.Views;assembly=BrainTrainer"
                        xmlns:controls="clr-namespace:BrainTrainer.Controls;assembly=BrainTrainer"
                        x:Class="BrainTrainer.Pages.MainPage" BackgroundColor="{StaticResource BackgroundColor}">
-  <controls:SwipeContentView x:Name="MainSwipeContentView" SwipeLeftCommand="{Binding NextQuestionCommand}" SwipeLeft="SwipeContentView_OnSwipeLeft"  Padding="5">
-      <views:QuestionView BindingContext="{Binding CurrentQuestion}" VerticalOptions="FillAndExpand" />
-      <!--<Button HeightRequest="80" BackgroundColor="{StaticResource BackgroundColor}"
-              TextColor="{StaticResource TextColorDark}"
-              Text="NextQuestion" Command="{Binding NextQuestionCommand}" BorderWidth="1"
-              BorderColor="{StaticResource  TextColorDark}" />-->
-  </controls:SwipeContentView>
+    <controls:SwipeContentView x:Name="MainSwipeContentView" SwipeLeftCommand="{Binding NextQuestionCommand}"
+                               SwipeLeft="SwipeContentView_OnSwipeLeft" Padding="5">
+        <StackLayout Orientation="Vertical">
+            <views:QuestionView BindingContext="{Binding CurrentQuestion}" VerticalOptions="FillAndExpand" />
+            <views:AnswerView />
+            <Button Text="Show answer"
+                    IsVisible="{Binding IsAnswerShowed, Converter={StaticResource BoolInversionConverter}}"
+                    Style="{StaticResource MainButtonStyle}" VerticalOptions="End"
+                    Command="{Binding ShowAnswerCommand}" />
+        </StackLayout>
+    </controls:SwipeContentView>
 </pages:BaseContentPage>

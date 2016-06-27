@@ -1,6 +1,7 @@
 ﻿<Application xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BrainTrainer.App">
+                 xmlns:converters="clr-namespace:BrainTrainer.Converters;assembly=BrainTrainer"
+                 x:Class="BrainTrainer.App">
   <Application.Resources>
     <ResourceDictionary>
       <Color x:Key="MainColor">#1B2E41</Color>
@@ -10,9 +11,43 @@
       <Color x:Key="AccentColor1">#014783</Color>
       <Color x:Key="AccentColor2">#FF5200</Color>
       <Color x:Key="WhiteColor">White</Color>
+      <Color x:Key="GrayColor">Gray</Color>
       <Color x:Key="TextColorLight">#293949</Color>
       <Color x:Key="TextColorDark">#293949</Color>
       <Color x:Key="DefaultConverterColor">#006400</Color>
+
+      <converters:BoolInversionConverter x:Key="BoolInversionConverter"></converters:BoolInversionConverter>
+
+
+      <Style x:Key="MainTextStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextColorDark}" />
+        <Setter Property="LineBreakMode" Value="WordWrap" />
+        <Setter Property="FontSize">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="x:Double">
+              <OnPlatform.iOS>24</OnPlatform.iOS>
+              <OnPlatform.Android>30</OnPlatform.Android>
+              <OnPlatform.WinPhone>35</OnPlatform.WinPhone>
+            </OnPlatform>
+          </Setter.Value>
+        </Setter>
+      </Style>
+
+      <Style x:Key="MainButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource TextColorDark}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor1}" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="FontSize">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="x:Double">
+              <OnPlatform.iOS>24</OnPlatform.iOS>
+              <OnPlatform.Android>30</OnPlatform.Android>
+              <OnPlatform.WinPhone>35</OnPlatform.WinPhone>
+            </OnPlatform>
+          </Setter.Value>
+        </Setter>
+      </Style>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

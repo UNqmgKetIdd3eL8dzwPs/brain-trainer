@@ -13,7 +13,8 @@ namespace BrainTrainer.Droid.Renderers
         {
             if (Parent != null)
             {
-                var swipeContentViewRenderer = Parent.Parent as SwipeContentViewRenderer;
+                //ToDO: find a better solution to reolve SwipeContentViewRenderer
+                var swipeContentViewRenderer = Parent.Parent.Parent as SwipeContentViewRenderer;
                 if (swipeContentViewRenderer != null)
                 {
                     swipeContentViewRenderer.Detector.OnTouchEvent(e);

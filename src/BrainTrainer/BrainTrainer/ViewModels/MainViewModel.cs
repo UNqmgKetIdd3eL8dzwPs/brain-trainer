@@ -17,6 +17,8 @@ namespace BrainTrainer.ViewModels
         private Question _currentQuestion;
         private ICommand _nextQuestionCommand;
         private int _minNumberOfElements = 10;
+        private ICommand _showAnswerCommand;
+        private bool _isAnswerShowed;
 
         public MainViewModel()
         {
@@ -26,7 +28,16 @@ namespace BrainTrainer.ViewModels
 
         public ICommand NextQuestionCommand
             => _nextQuestionCommand ?? (_nextQuestionCommand = new Command(() => OnNextQuestion()));
-        
+
+        public ICommand ShowAnswerCommand
+            => _showAnswerCommand ?? (_showAnswerCommand = new Command(() => OnShowAnswer()));
+
+        public bool IsAnswerShowed
+        {
+            get { return _isAnswerShowed; }
+            set { SetProperty(ref _isAnswerShowed, value); }
+        }
+
         public Question CurrentQuestion
         {
             get { return _currentQuestion; }
@@ -45,8 +56,14 @@ namespace BrainTrainer.ViewModels
         {
             if (_questions != null)
             {
+                IsAnswerShowed = false;
                 CurrentQuestion = _questions.Dequeue();
             }
+        }
+
+        private void OnShowAnswer()
+        {
+            IsAnswerShowed = true;
         }
 
         private async void MinNumberReached(object sender, EventArgs eventArgs)
