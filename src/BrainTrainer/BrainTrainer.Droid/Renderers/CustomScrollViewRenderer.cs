@@ -16,7 +16,7 @@ namespace BrainTrainer.Droid.Renderers
                 var swipeContentViewRenderer = Parent.Parent as SwipeContentViewRenderer;
                 if (swipeContentViewRenderer != null)
                 {
-                    swipeContentViewRenderer._detector.OnTouchEvent(e);
+                    swipeContentViewRenderer.Detector.OnTouchEvent(e);
                 }
             }
             return base.DispatchTouchEvent(e);
