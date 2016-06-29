@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using BrainTrainer.Client.Models;
 using BrainTrainer.Client.Service;
+using BrainTrainer.Client.UrlSerializer;
 
 namespace BrainTrainer.Client
 {
@@ -13,7 +14,7 @@ namespace BrainTrainer.Client
 
         public async Task<IEnumerable<searchQuestion>> GetQuestions(Settings settings)
         {
-           return  await GetObjects<searchQuestion>(settings.ToUrlString());
+           return (await GetObject<search>(UrlConverter.ToUrl(settings))).Items;
         }
     }
 }

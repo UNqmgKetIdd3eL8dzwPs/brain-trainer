@@ -5,7 +5,7 @@ namespace BrainTrainer.ViewModels
 {
     class BTViewModelBase : BaseViewModel
     {
-        protected QuestionsDBServiceClient ServiceClient => new QuestionsDBServiceClient();
+        protected QuestionsClient ServiceClient => new QuestionsClient(@"http://db.chgk.info/xml/");
 
         /// <summary>
         /// Called when the view appears.
