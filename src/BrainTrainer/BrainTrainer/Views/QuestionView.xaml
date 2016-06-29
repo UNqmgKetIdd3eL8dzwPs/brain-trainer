@@ -8,7 +8,7 @@
             <Image x:Name="QuestionImage" IsVisible="{Binding HasImage}" HorizontalOptions="Fill"
                    Source="{Binding Image}"
                    Aspect="AspectFit" PropertyChanged="BindableObject_OnPropertyChanged" />
-            <Label Text="{Binding QuestionText}" VerticalOptions="Fill" Style="{StaticResource MainTextStyle}"/>
+            <Label Text="{Binding QuestionText}" VerticalOptions="Fill" Style="{StaticResource MainTextStyle}" HorizontalTextAlignment="Center"/>
         </StackLayout>
     </controls:CustomScrollView>
 </ContentView>
