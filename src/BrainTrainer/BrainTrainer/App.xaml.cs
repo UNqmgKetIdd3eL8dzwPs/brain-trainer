@@ -1,5 +1,7 @@
-﻿using BrainTrainer.Client.Enums;
+﻿using BrainTrainer.Client;
+using BrainTrainer.Client.Enums;
 using BrainTrainer.Client.Extensions;
+using BrainTrainer.Client.UrlSerializer;
 using BrainTrainer.Pages;
 using Xamarin.Forms;
 
@@ -7,6 +9,8 @@ namespace BrainTrainer
 {
     public partial class App 
     {
+        public static Settings Settings = new Settings();
+
         public App()
         {
             // The root page of your application

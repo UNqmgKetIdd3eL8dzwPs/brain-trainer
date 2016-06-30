@@ -1,24 +1,22 @@
 ﻿using System;
-using BrainTrainer.Client.Attributes;
+using BrainTrainer.Client.UrlSerializer.Attributes;
 
 namespace BrainTrainer.Client.Enums
 {
-
-    [UrlPart("complexity")]
     [Flags]
     public enum Complexity
     {
-        [UrlValue]
+        [UrlEnumValue]
         None,
-        [UrlValue("1")]
+        [UrlEnumValue("1")]
         VeryEasy,
-        [UrlValue("2")]
+        [UrlEnumValue("2")]
         Easy,
-        [UrlValue("3")]
+        [UrlEnumValue("3")]
         Average,
-        [UrlValue("4")]
+        [UrlEnumValue("4")]
         Difficult,
-        [UrlValue("5")]
+        [UrlEnumValue("5")]
         VeryDifficult,
     }
 }

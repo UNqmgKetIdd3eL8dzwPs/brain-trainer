@@ -9,6 +9,7 @@
                                SwipeLeft="SwipeContentView_OnSwipeLeft" Padding="5">
         <StackLayout Orientation="Vertical">
             <views:QuestionView BindingContext="{Binding CurrentQuestion}" VerticalOptions="FillAndExpand" />
+            <BoxView VerticalOptions="Start" HeightRequest="1" HorizontalOptions="Fill" Color="{StaticResource WhiteColor}"></BoxView>
             <views:AnswerView />
             <Button Text="Show answer"
                     IsVisible="{Binding IsAnswerShowed, Converter={StaticResource BoolInversionConverter}}"

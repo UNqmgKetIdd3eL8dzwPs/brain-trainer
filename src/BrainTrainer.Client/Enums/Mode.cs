@@ -1,13 +1,12 @@
-﻿using BrainTrainer.Client.Attributes;
+﻿using BrainTrainer.Client.UrlSerializer.Attributes;
 
 namespace BrainTrainer.Client.Enums
 {
-    [UrlPart]
     public enum Mode
     {
-        [UrlValue("search/questions")]
+        [UrlEnumValue("random")]
         Random,
-        [UrlValue("random")]
+        [UrlEnumValue("search/questions")]
         Search
     }
 }

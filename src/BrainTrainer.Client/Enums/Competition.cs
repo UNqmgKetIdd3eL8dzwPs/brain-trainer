@@ -1,23 +1,22 @@
 ﻿using System;
-using BrainTrainer.Client.Attributes;
+using BrainTrainer.Client.UrlSerializer.Attributes;
 
 namespace BrainTrainer.Client.Enums
 {
-    [UrlPart("competition")]
     [Flags]
     public enum Competition
     {
-        //[UrlValue("1")]
+        [UrlEnumValue("1")]
         ChtoGdeKogda = 1,
-        [UrlValue("2")]
+        [UrlEnumValue("2")]
         BrainRing = 2,
-        [UrlValue("3")]
+        [UrlEnumValue("3")]
         Internet = 4,
-        [UrlValue("4")]
+        [UrlEnumValue("4")]
         Beskrylka = 8,
-        [UrlValue("5")]
+        [UrlEnumValue("5")]
         SvoyaIgra = 16,
-        [UrlValue("6")]
+        [UrlEnumValue("6")]
         Eruditka = 32,
     }
 }

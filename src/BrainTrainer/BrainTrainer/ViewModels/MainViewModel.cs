@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using BrainTrainer.Client;
 using BrainTrainer.Client.Models;
+using BrainTrainer.Client.UrlSerializer;
 using BrainTrainer.Collections;
 using BrainTrainer.DataObjects;
 using Xamarin.Forms;
@@ -22,7 +24,7 @@ namespace BrainTrainer.ViewModels
 
         public MainViewModel()
         {
-            var randomQuestions =  ServiceClient.GetRandomQuestionsPack().GetAwaiter();
+            var randomQuestions =  ServiceClient.GetQuestions(App.Settings).GetAwaiter();
             randomQuestions.OnCompleted(() => InitializeQuestions(randomQuestions));
         }
 
@@ -68,7 +70,7 @@ namespace BrainTrainer.ViewModels
 
         private async void MinNumberReached(object sender, EventArgs eventArgs)
         {
-            var moreQuestions = await ServiceClient.GetRandomQuestionsPack(_questionsLimit);
+            var moreQuestions = await ServiceClient.GetQuestions(App.Settings);
             var searchQuestions = moreQuestions.ToList();
             if (moreQuestions != null && searchQuestions.Any())
             {
