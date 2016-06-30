@@ -5,14 +5,15 @@
   <Application.Resources>
     <ResourceDictionary>
       <Color x:Key="MainColor">#1B2E41</Color>
+      <Color x:Key="Transparent">#00000000</Color>
       <Color x:Key="SecondaryColor">#293949</Color>
-      <Color x:Key="BackgroundColor">#F0F1F2</Color>
+      <Color x:Key="BackgroundColor">#5F2059</Color>
       <Color x:Key="ShadowedBackgroundColor">#30000000</Color>
       <Color x:Key="AccentColor1">#014783</Color>
       <Color x:Key="AccentColor2">#FF5200</Color>
       <Color x:Key="WhiteColor">White</Color>
       <Color x:Key="GrayColor">Gray</Color>
-      <Color x:Key="TextColorLight">#293949</Color>
+      <Color x:Key="TextColorLight">White</Color>
       <Color x:Key="TextColorDark">#293949</Color>
       <Color x:Key="DefaultConverterColor">#006400</Color>
 
@@ -20,7 +21,7 @@
 
 
       <Style x:Key="MainTextStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextColorDark}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColorLight}" />
         <Setter Property="LineBreakMode" Value="WordWrap" />
         <Setter Property="FontSize">
           <Setter.Value>
@@ -34,9 +35,10 @@
       </Style>
 
       <Style x:Key="MainButtonStyle" TargetType="Button">
-        <Setter Property="TextColor" Value="{StaticResource TextColorDark}" />
-        <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{StaticResource AccentColor1}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColorLight}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="BorderColor" Value="{StaticResource Transparent}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
         <Setter Property="HeightRequest" Value="60" />
         <Setter Property="FontSize">
           <Setter.Value>
