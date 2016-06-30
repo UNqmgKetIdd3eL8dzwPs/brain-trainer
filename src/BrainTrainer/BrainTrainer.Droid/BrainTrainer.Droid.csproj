@@ -110,6 +110,8 @@
   <ItemGroup>
     <Compile Include="Listeners\SwipeGestureListener.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
+    <Compile Include="Renderers\CustomLabelRenderer.cs" />
     <Compile Include="Renderers\CustomScrollViewRenderer.cs" />
     <Compile Include="Renderers\SwipeContentViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -117,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <AndroidAsset Include="Assets\roboto-condensed.regular.ttf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
