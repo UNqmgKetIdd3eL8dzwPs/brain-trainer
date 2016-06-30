@@ -14,7 +14,9 @@ namespace BrainTrainer.Client
 
         public async Task<IEnumerable<searchQuestion>> GetQuestions(Settings settings)
         {
-           return (await GetObject<search>(UrlConverter.ToUrl(settings))).Items;
+            var url = UrlConverter.ToUrl(settings);
+
+            return (await GetObject<search>(url)).Items;
         }
     }
 }

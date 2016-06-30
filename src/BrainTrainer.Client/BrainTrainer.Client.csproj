@@ -40,6 +40,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UrlSerializer\Attributes\ConditionalConvertionAttributes\UrlConvertIfAttribute.cs" />
+    <Compile Include="UrlSerializer\Attributes\ConditionalConvertionAttributes\UrlConvertIfEnumAttribute.cs" />
+    <Compile Include="UrlSerializer\Attributes\ConditionalConvertionAttributes\UrlConvertIfStringAttribute.cs" />
+    <Compile Include="UrlSerializer\Attributes\ConditionalConvertionAttributes\UrlConvertIfIntAttribute.cs" />
+    <Compile Include="UrlSerializer\Attributes\ConditionalConvertionAttributes\UrlConvertIfBoolAttribute.cs" />
     <Compile Include="UrlSerializer\Attributes\UrlBoolValueAttribute.cs" />
     <Compile Include="UrlSerializer\Attributes\UrlPrefixAttribute.cs" />
     <Compile Include="UrlSerializer\Attributes\UrlEnumValueAttribute.cs" />

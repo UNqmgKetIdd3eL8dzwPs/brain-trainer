@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using BrainTrainer.Client.UrlSerializer.Attributes;
+using BrainTrainer.Client.UrlSerializer.Attributes.ConditionalConvertionAttributes;
 
 namespace BrainTrainer.Client.UrlSerializer
 {
@@ -22,9 +24,11 @@ namespace BrainTrainer.Client.UrlSerializer
         {
             var type = value.GetType();
 
-            var convertedProperties = type
-                .GetRuntimeProperties()
-                .Where(p => p.GetCustomAttribute<UrlIgnoreAttribute>() == null)
+            var properties = type
+                .GetRuntimeProperties().ToList();
+
+            var convertedProperties = properties.Where(p => p.GetCustomAttribute<UrlIgnoreAttribute>() == null 
+                && ShouldConvert(p.GetValue(value), value, properties, p.GetCustomAttributes()))
                 .OrderBy(p => p.GetCustomAttribute<UrlOrderAttribute>()?.Order ?? int.MaxValue)
                 .Select(p =>
                 {
@@ -109,6 +113,62 @@ namespace BrainTrainer.Client.UrlSerializer
         private static string GetPrefix(IEnumerable<Attribute> attributes)
         {
             return attributes.OfType<UrlPrefixAttribute>().FirstOrDefault()?.Prefix ?? string.Empty;
+        }
+
+        private static bool ShouldConvert(object property, object containingObject, IEnumerable<PropertyInfo> properties, IEnumerable<Attribute> attributes)
+        {
+            var conditionalConversionAttributes = attributes.OfType<UrlConvertIfAttribute>().ToList();
+
+            if (conditionalConversionAttributes == null || !conditionalConversionAttributes.Any())
+            {
+                return true;
+            }
+
+            foreach (var attribute in conditionalConversionAttributes)
+            {
+                var dependentProperty = properties.FirstOrDefault(p => p.Name == attribute.PropertyName);
+                if (dependentProperty == null)
+                {
+                    return false;
+                }
+
+                var dependentProperyValue = dependentProperty.GetValue(containingObject);
+
+                if (dependentProperyValue == null && !attribute.IsNull)
+                {
+                    return false;
+                }
+
+                if (!CheckShouldConvert((dynamic)dependentProperyValue, (dynamic)attribute))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool CheckShouldConvert(Enum firstValue, UrlConvertIfEnumAttribute attribute)
+        {
+            return System.Convert.ToInt32(firstValue) == attribute.Value;
+        }
+        private static bool CheckShouldConvert(int firstValue, UrlConvertIfIntAttribute attribute)
+        {
+            return firstValue == attribute.Value;
+        }
+        private static bool CheckShouldConvert(bool firstValue, UrlConvertIfBoolAttribute attribute)
+        {
+            return firstValue == attribute.Value;
+        }
+        private static bool CheckShouldConvert(string firstValue, UrlConvertIfStringAttribute attribute)
+        {
+            return firstValue == attribute.Value;
+        }
+
+        // catches all other cases
+        private static bool CheckShouldConvert(object firstValue, object attribute)
+        {
+            return false;
         }
 
         #endregion

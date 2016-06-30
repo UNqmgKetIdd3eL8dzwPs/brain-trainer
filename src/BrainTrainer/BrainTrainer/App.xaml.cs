@@ -9,6 +9,8 @@ namespace BrainTrainer
 {
     public partial class App 
     {
+        public static Settings Settings = new Settings();
+
         public App()
         {
             // The root page of your application

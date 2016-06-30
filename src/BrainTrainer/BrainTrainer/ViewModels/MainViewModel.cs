@@ -24,7 +24,7 @@ namespace BrainTrainer.ViewModels
 
         public MainViewModel()
         {
-            var randomQuestions =  ServiceClient.GetQuestions(new Settings()).GetAwaiter();
+            var randomQuestions =  ServiceClient.GetQuestions(App.Settings).GetAwaiter();
             randomQuestions.OnCompleted(() => InitializeQuestions(randomQuestions));
         }
 
@@ -70,7 +70,7 @@ namespace BrainTrainer.ViewModels
 
         private async void MinNumberReached(object sender, EventArgs eventArgs)
         {
-            var moreQuestions = await ServiceClient.GetQuestions(new Settings());
+            var moreQuestions = await ServiceClient.GetQuestions(App.Settings);
             var searchQuestions = moreQuestions.ToList();
             if (moreQuestions != null && searchQuestions.Any())
             {
